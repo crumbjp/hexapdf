@@ -100,7 +100,7 @@ module HexaPDF
         when Hash
           val.each {|k, v| val[k] = recurse(v) }
         when Array
-          val.map! {|v| recurse(v) }
+          val.map {|v| recurse(v) }
         when HexaPDF::Reference
           val = @doc.object(val)
           @dereference_later.push(val)
